@@ -6,7 +6,7 @@
     <meta name="description" content="Type some info">
     <meta name="author" content="Type name">
 
-    <title>Website layout sample </title>
+    <title>@ViewData["Title"] | Sams General Store</title>
 
     <!-- Bootstrap css -->
     <link href="~/css/bootstrap.css?v=2.0" rel="stylesheet" type="text/css" />
@@ -33,13 +33,7 @@
                     <div class="order-lg-last col-lg-5 col-sm-8 col-8">
                         <div class="float-end">
                             <a href="#" class="btn btn-light">
-                                <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Sign in  </span>
-                            </a>
-                            <a href="#" class="btn btn-light">
-                                <i class="fa fa-heart"></i>  <span class="ms-1 d-none d-sm-inline-block">Wishlist</span>
-                            </a>
-                            <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
-                                <i class="fa fa-shopping-cart"></i> <span class="ms-1">My cart </span>
+                                <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Sign in</span>
                             </a>
                         </div>
                     </div> <!-- col end.// -->
@@ -73,24 +67,16 @@
                 <div class="collapse navbar-collapse" id="navbar_main">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link ps-0" href="#"> Categories </a>
+                            <a class="nav-link" href=@Url.Action("About", "Home")>About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Hot offers</a>
+                            <a class="nav-link ps-0" href=@Url.Action("ProductList", "Home")>Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Gift boxes</a>
+                            <a class="nav-link" href=@Url.Action("ShoppingCart", "Home")>Shopping Cart</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Menu item</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Menu name</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                        <partial name="_LoginPartial" />
+                        @*<li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">
                                 Others
                             </a>
@@ -99,12 +85,13 @@
                                 <li> <a class="dropdown-item" href="#">Submenu two</a> </li>
                                 <li> <a class="dropdown-item" href="#">Submenu three</a> </li>
                             </ul>
-                        </li>
+                        </li>*@
                     </ul>
                 </div> <!-- collapse end.// -->
             </div> <!-- container end.// -->
         </nav> <!-- navbar end.// -->
     </header> <!-- section-header end.// -->
+
     @RenderBody()
 
     <footer class="section-footer bg-gray-light">
