@@ -108,6 +108,7 @@ namespace SamsGeneralStore.DATA.EF//.Metadata
         //FK
         public int StockStatusID { get; set; }
 
+        [DisplayFormat(NullDisplayText = "N/A")]
         [StringLength(75)]
         [Display(Name = "Image")]
         public string ? Image { get; set; }
@@ -164,6 +165,27 @@ namespace SamsGeneralStore.DATA.EF//.Metadata
         [StringLength(24)]
         [DataType(DataType.PhoneNumber)]
         public string? Phone { get; set; }
+    }
+
+    #endregion
+
+    #region OrderProducts
+
+    public class OrderProductMetadata
+    {
+        public int OrderProductID { get; set; }
+
+        public int ProductID { get; set; }
+
+        public int OrderID { get; set; }
+
+        [DisplayFormat(NullDisplayText = "N/A")]
+        public int? Quantity { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "0:c")]
+        [Display(Name = "Product Price")]
+        [Range(0, (double)decimal.MaxValue)]
+        public decimal? ProductPrice { get; set; }
     }
 
     #endregion

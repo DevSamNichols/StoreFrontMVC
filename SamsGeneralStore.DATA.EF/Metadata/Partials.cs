@@ -45,4 +45,10 @@ namespace SamsGeneralStore.DATA.EF.Models//.Metadata
         public string FullName { get { return $"{FirstName} {LastName}"; } }
     }
     #endregion
-}
+
+    #region OrderProducts
+    [ModelMetadataType(typeof(OrderProductMetadata))]
+    public partial class OrderProduct { }
+    #endregion
+
+}//End Namespace
