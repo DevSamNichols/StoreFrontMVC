@@ -90,7 +90,7 @@ namespace SamsGeneralStore.DATA.EF//.Metadata
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "0:c")]
         [Range(0, (double)decimal.MaxValue)]
-        public decimal ? Price { get; set; }
+        public decimal? Price { get; set; }
 
         [StringLength(100)]
         [Display(Name = "Product Name")]
