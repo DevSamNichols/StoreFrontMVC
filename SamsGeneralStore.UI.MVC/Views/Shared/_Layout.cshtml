@@ -1,4 +1,17 @@
-﻿<!DOCTYPE HTML>
+﻿@* Added the two using statements below to show the count of Cart items *@
+
+@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json
+
+@*
+    Added the two lines below to lock down certain nav items.
+    These are required to check the Authentication of a user (aka whether or not they are logged in)
+*@
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -88,14 +101,64 @@
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Index", "Products")>Products</a>
                         </li>
-                        @*Commented out because no shopping cart functionality yet.*@
-                        @*<li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("ShoppingCart", "Home")>Shopping Cart</a>
-                        </li>*@
+                       
+                        <li class="nav-item">
 
+                                @* Product Count For Cart *@
+                                @* You MUST include these using statements in the _Layout for this to work:
+                                    - using Microsoft.AspNetCore.Http
+                                    - using Newtonsoft.Json
+                                *@
+
+                                @{
+                                    //Create a bool to determine if there are items in the cart - false by default
+                                    bool cartHasProducts = false;
+
+                                    //Create a variable to store the number of products - 0 by default
+                                    int productCount = 0;
+
+                                    //Check if the "cart" string exists in the Session
+                                    if (!String.IsNullOrEmpty(Context.Session.GetString("cart")))
+                                    {
+                                        //If so, there are items in the cart - flip the bool
+                                        cartHasProducts = true;
+
+                                        //Create the dictionary to hold the cart items
+                                        var products = new Dictionary<int, CartItemViewModel>();
+
+                                        //Deserialize the session cart and store the results in the dictionary
+                                        products = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(Context.Session.GetString("cart"));
+
+                                        //Create a variable for the product count and assign it the sum of the Qty of CartItems
+                                        productCount = products.Sum(p => p.Value.Qty);
+                                    }
+
+                                }
+
+                                <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")">
+                                
+                                    @* If there are products in the cart, show the product count *@
+                                    @if (cartHasProducts)
+                                    {
+                                        <sup style="
+                                             color: white;
+                                             background-color: red;
+                                             border-radius: 40%;
+                                             display: inline-block;
+                                             height: 1em;
+                                             padding: 1em;
+                                             text-align: center;">
+
+                                            @productCount
+
+                                        </sup>
+                                    }
+
+                                </a>
+                            </li>
 
                         @*No Admin functionality yet, TODO*@
-                        @*<partial name="_LoginPartial" />*@
+                        <partial name="_LoginPartial" />
 
 
 
@@ -115,8 +178,13 @@
         </nav> <!-- navbar end.// -->
     </header> <!-- section-header end.// -->
 
-    @RenderBody()
+    <div class="hero_area">
+        @RenderSection("Slider", false)
+    </div>
 
+    <div class="container">
+        @RenderBody()
+    </div>
     <footer class="section-footer bg-gray-light">
         <div class="container">
             <section class="footer-main padding-y">

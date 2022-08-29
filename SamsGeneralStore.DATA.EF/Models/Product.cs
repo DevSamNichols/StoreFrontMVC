@@ -20,7 +20,8 @@ namespace SamsGeneralStore.DATA.EF.Models
         public int? StockStatusId { get; set; }
         public string? Image { get; set; }
 
-        public virtual Manufacturer Manufacturer { get; set; } = null!;
+        //public virtual Manufacturer Manufacturer { get; set; } = null!;
+        public virtual Manufacturer? Manufacturer { get; set; }
         public virtual ProductType? ProductType { get; set; }
         public virtual StockStatus? StockStatus { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }

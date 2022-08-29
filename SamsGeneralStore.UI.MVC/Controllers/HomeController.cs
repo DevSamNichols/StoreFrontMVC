@@ -23,12 +23,6 @@ namespace SamsGeneralStore.UI.MVC.Controllers
             return View();
         }
 
-        //TODO
-        public IActionResult ShoppingCart() 
-        {
-            return View(); 
-        }
-
         public IActionResult Privacy()
         {
             return View();

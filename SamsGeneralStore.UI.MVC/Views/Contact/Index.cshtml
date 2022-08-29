@@ -1,0 +1,99 @@
+﻿@*
+    This is a 'model declaration.' Each view can have a SINGLE model tied to it.
+    The model decleration ensures this View knows how to display, send, and read info using the model provided.
+*@
+@model SamsGeneralStore.Models.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+@*
+    Email - Step 8
+    - Copied content from _archive/contact.html into this view
+    - Updated the <input> tags to include asp-for="[propname]"
+    - Updated the <form> tag to include asp-action="Contact"
+    - Copied the <span asp-validation-for="[propname]"></span> tags into the template <form> 
+    - Deleted the original scaffolded form that was added during code generation 
+*@
+
+<!-- ======= Contact Section ======= -->
+<section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contact Form</h2>            
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="info-box">
+                            <i class="bx bx-map"></i>
+                            <h3>Address</h3>
+                            <p>1740 W 92nd St, Kansas City, MO 64114</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <i class="bx bx-envelope"></i>
+                            <h3>Email</h3>
+                            <p>contact@centriq.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <i class="bx bx-phone-call"></i>
+                            <h3>Phone</h3>
+                            <p>(913) 322-7000</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <form asp-action="Index" method="post" role="form" class="php-email-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" asp-for="Name" name="name" class="form-control" id="name" placeholder="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" asp-for="Email" class="form-control" name="email" id="email" placeholder="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" asp-for="Subject" class="form-control" name="subject" id="subject" placeholder="Subject">
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" asp-for="Message" name="message" rows="5" placeholder="Message"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+<!-- ======= Map Section ======= -->
+<section class="map mt-2">
+    <div class="container-fluid p-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.274884998462!2d-94.60958528389634!3d38.96339085065514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e925e366ed0f%3A0x73aec4617abd2f03!2sCentriq%20Training!5e0!3m2!1sen!2sus!4v1630519113795!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</section><!-- End Map Section -->
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

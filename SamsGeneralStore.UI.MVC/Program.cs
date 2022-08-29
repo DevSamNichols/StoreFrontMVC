@@ -1,7 +1,8 @@
+using SamsGeneralStore.DATA.EF.Models;
+using SamsGeneralStore.UI.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SamsGeneralStore.UI.MVC.Data;
-using SamsGeneralStore.DATA.EF.Models;
+//using Microsoft.AspNetCore.Session;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 //Registering our new Database Context
-builder.Services.AddDbContext<StoreFrontContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<StoreFrontContext>(options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

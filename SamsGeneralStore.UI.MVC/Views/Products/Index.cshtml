@@ -15,7 +15,7 @@
                 @*@if (User.IsInRole("Admin"))*@
                 @*{*@                   
                     <span>
-                        <a asp-action="Create">Add New Gadget</a>                        
+                        <a asp-action="Create">Add New Product</a>                        
                     </span>
                 @*}*@
                 <a asp-action="TiledProducts">Tile View</a>
@@ -122,7 +122,7 @@
                                 {
                                     <span>|</span>
                                     <a disabled="disabled" class="text-danger text-decoration-line-through"
-                                    title="Cannot delete this Gadget as it is referenced by an Order">
+                                    title="Cannot delete this Product as it is referenced by an Order">
                                         Delete
                                     </a>
                                 }

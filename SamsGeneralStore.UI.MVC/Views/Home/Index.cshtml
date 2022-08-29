@@ -16,7 +16,44 @@
 <!-- ================ SECTION INTRO END.// ================ -->
 
 <!-- ================ SECTION PRODUCTS ================ -->
-<!-- Removed Section Products, Products has its own controller and view. -->
+@section Slider{
+<!-- slider section -->
+<section class="slider_section ">
+    <div class="slider_bg_box">
+        <img src="" alt="">
+    </div>
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-6 ">
+                            <div class="detail-box">
+                                <h1>
+                                    <span>
+                                        Sams
+                                    </span>
+                                    <br>
+                                    Store
+                                </h1>
+                                <p>
+                                    A shop for all adventurers, including ones who took an arrow to the knee..
+                                </p>
+                                <div class="btn-box">
+                                    <a href="@Url.Action("Index", "Products")" class="btn1">
+                                        Shop Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</section>
+<!-- end slider section -->
+}
 <!-- ================ SECTION PRODUCTS END.// ================ -->
 
 <!-- ================ SECTION FEATURE ================ -->
